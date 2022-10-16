@@ -24,18 +24,5 @@ public class BrowserUtils {
     }
 
 
-    public static void login(WebDriver driver, String username){
-        driver.get("https://qa2.vytrack.com/user/login");
-
-        WebElement inputUsername = driver.findElement(By.id("prependedInput"));
-        inputUsername.sendKeys(username);
-
-        WebElement inputPassword = driver.findElement(By.xpath("//input[@type='password']"));
-        inputPassword.sendKeys("UserUser123");
-
-        WebElement loginBtn = driver.findElement(By.xpath("//button[.='Log in']"));
-        loginBtn.click();
-
-    }
 
 }
