@@ -1,6 +1,8 @@
 package com.vytrack.tests;
 
 import com.vytrack.utilities.BrowserUtils;
+import com.vytrack.utilities.ConfigurationReader;
+import com.vytrack.utilities.VyTrackUtilities;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -12,7 +14,8 @@ public class US1_Accessing_All_Main_Modules extends TestBase{
     public void store_and_sales_managers_accessing_all_main_modules(){
 
         // 1. login as a salesmanager or storemanagers
-        BrowserUtils.login(driver, "storemanager55");
+        driver.get(ConfigurationReader.getProperty("env"));
+        VyTrackUtilities.login(driver, ConfigurationReader.getProperty("salesManager1"), ConfigurationReader.getProperty("password"));
 
         // 2. Verify the users see 8 modules: Dashboards, Fleet, Customers, Sales, Activities, Marketing, Reports & Segments, System
         WebElement dashboards = driver.findElement(By.xpath("//div[@id='breadcrumb']//li[1]"));
@@ -55,7 +58,8 @@ public class US1_Accessing_All_Main_Modules extends TestBase{
     public void drivers_accessing_all_main_modules(){
 
         //1. login as a driver
-        BrowserUtils.login(driver, "user7");
+        driver.get(ConfigurationReader.getProperty("env"));
+        VyTrackUtilities.login(driver, ConfigurationReader.getProperty("driver1"),ConfigurationReader.getProperty("password"));
 
         //2. Verify the users see 4 modules: Fleet, Customers, Activities, System
         WebElement fleet = driver.findElement(By.xpath("//div[@id='main-menu']//li[@class='dropdown dropdown-level-1'][1]"));
